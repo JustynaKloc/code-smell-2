@@ -9,21 +9,21 @@ public abstract class Customer {
     protected String email;
     protected Account account;
 
-    Customer(final String name, final String email, final Account account) {
+    Customer(String name, String email, Account account) {
         this.name = name;
         this.email = email;
         this.account = account;
     }
 
-    public abstract void withdraw(Money money);
+    public abstract void withdraw(double sum, String currency);
 
-    protected abstract String getFullName();
+    abstract protected String getFullName();
 
     public String getName() {
         return name;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -31,7 +31,27 @@ public abstract class Customer {
         return email;
     }
 
-    public void setEmail(final String email) {
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String printCustomerDaysOverdrawn() {
+        String fullName = getFullName();
+
+        String accountDescription = "Account: IBAN: " + account.getIban()
+                + ", Days Overdrawn: " + account.getDaysOverdrawn();
+        return fullName + accountDescription;
+    }
+
+    public String printCustomerMoney() {
+        String fullName = getFullName();
+        String accountDescription = "";
+        accountDescription += "Account: IBAN: " + account.getIban() + ", Money: " + account.getMoneyAmount();
+        return fullName + accountDescription;
+    }
+
+    public String printCustomerAccount() {
+        return "Account: IBAN: " + account.getIban() + ", Money: "
+                + account.getMoneyAmount() + ", Account type: " + account.getType();
     }
 }

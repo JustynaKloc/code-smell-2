@@ -6,21 +6,27 @@ package com.danix.code.smell.example001;
 public class Person extends Customer {
     protected String surname;
 
-    Person(final String name, final String surname, final String email, final Account account) {
+    Person(String name, String surname, String email, Account account) {
         super(name, email, account);
         this.surname = surname;
     }
 
     @Override
-    public void withdraw(final Money money) {
-        if (account.isOverdraft()) {
-            account.substract(Money.newInstance(money.getAmount() + money.getAmount() * account.overdraftFee(),
-                        money.getCurrency()));
+    public void withdraw(double sum, String currency) {
+        if (account.getType().isPremium()) {
+            if (account.isOverdraft()) {
+                account.substract(Money.newInstance(sum + sum * account.overdraftFee(), currency));
+            } else {
+                account.substract(Money.newInstance(sum, currency));
+            }
         } else {
-                account.substract(Money.newInstance(money.getAmount(), money.getCurrency()));
+            if (account.isOverdraft()) {
+                account.substract(Money.newInstance(sum + sum * account.overdraftFee(), currency));
+            } else {
+                account.substract(Money.newInstance(sum, currency));
             }
         }
-
+    }
 
     @Override
     protected String getFullName() {

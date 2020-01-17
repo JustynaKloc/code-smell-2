@@ -43,12 +43,20 @@ public class AccountTest {
         assertThat(account.overdraftFee(), is(0.20));
     }
 
+    @Test
+    public void testPrintCustomer() {
+        Account account = getNormalAccount();
+        Customer customer = customerFactory.createPerson("danix", "dan", "dan@mail.com", account);
+        account.setCustomer(customer);
+        assertThat(account.printCustomer(), is("danix dan@mail.com"));
+    }
+
     private Account getNormalAccount() {
         AccountType premium = new AccountType(false);
         return new Account(premium, 9);
     }
 
-    private Account getPremiumAccount(final int daysOverdrawn) {
+    private Account getPremiumAccount(int daysOverdrawn) {
         AccountType normal = new AccountType(true);
         return new Account(normal, daysOverdrawn);
     }

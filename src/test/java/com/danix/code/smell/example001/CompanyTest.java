@@ -14,13 +14,11 @@ import org.junit.Test;
  */
 public class CompanyTest {
 
-    private static final Money SOME_EURO = Money.newEuro(10);
-
     @Test
     public void testWithdrawCompanyWithNormalAccount() throws Exception {
         Account account = getAccountByTypeAndMoney(false, 34);
         Customer customer = getCompanyCustomer(account);
-        customer.withdraw(SOME_EURO);
+        customer.withdraw(10, "EUR");
         assertThat(account.getMoneyAmount(), is(24.0));
     }
 
@@ -28,7 +26,7 @@ public class CompanyTest {
     public void testWithdrawCompanyWithNormalAccountAndOverdraft() throws Exception {
         Account account = getAccountByTypeAndMoney(false, -10);
         Customer customer = getCompanyCustomer(account);
-        customer.withdraw(SOME_EURO);
+        customer.withdraw(10, "EUR");
         assertThat(account.getMoneyAmount(), is(-21.0));
     }
 
@@ -36,7 +34,7 @@ public class CompanyTest {
     public void testWithdrawCompanyWithPremiumAccount() throws Exception {
         Account account = getAccountByTypeAndMoney(true, 34);
         Customer customer = getCompanyCustomer(account);
-        customer.withdraw(SOME_EURO);
+        customer.withdraw(10, "EUR");
         assertThat(account.getMoneyAmount(), is(24.0));
     }
 
@@ -44,7 +42,7 @@ public class CompanyTest {
     public void testWithdrawCompanyWithPremiumAccountAndOverdraft() throws Exception {
         Account account = getAccountByTypeAndMoney(true, -10);
         Customer customer = getCompanyCustomer(account);
-        customer.withdraw(SOME_EURO);
+        customer.withdraw(10, "EUR");
         assertThat(account.getMoneyAmount(), is(-20.25));
     }
 }
