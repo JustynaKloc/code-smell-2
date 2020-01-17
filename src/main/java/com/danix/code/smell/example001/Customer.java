@@ -35,7 +35,7 @@ public abstract class Customer {
         this.email = email;
     }
 
-    private static final String IBAN = "Account: IBAN:";
+    private static final String IBAN = "Account: IBAN: ";
 
     public String printCustomerDaysOverdrawn() {
         String fullName = getFullName();
