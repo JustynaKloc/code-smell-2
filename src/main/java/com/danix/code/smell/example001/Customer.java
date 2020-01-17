@@ -35,10 +35,12 @@ public abstract class Customer {
         this.email = email;
     }
 
+    private static final String IBAN = "Account: IBAN:";
+
     public String printCustomerDaysOverdrawn() {
         String fullName = getFullName();
 
-        String accountDescription = "Account: IBAN: " + account.getIban()
+        String accountDescription = IBAN + account.getIban()
                 + ", Days Overdrawn: " + account.getDaysOverdrawn();
         return fullName + accountDescription;
     }
@@ -46,12 +48,12 @@ public abstract class Customer {
     public String printCustomerMoney() {
         String fullName = getFullName();
         String accountDescription = "";
-        accountDescription += "Account: IBAN: " + account.getIban() + ", Money: " + account.getMoneyAmount();
+        accountDescription += IBAN + account.getIban() + ", Money: " + account.getMoneyAmount();
         return fullName + accountDescription;
     }
 
     public String printCustomerAccount() {
-        return "Account: IBAN: " + account.getIban() + ", Money: "
+        return IBAN + account.getIban() + ", Money: "
                 + account.getMoneyAmount() + ", Account type: " + account.getType();
     }
 }
