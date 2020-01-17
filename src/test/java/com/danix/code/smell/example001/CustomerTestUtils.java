@@ -27,4 +27,11 @@ public class CustomerTestUtils {
         account.setMoney(Money.newEuro(34.0));
         return customer;
     }
+    static Account getAccount(final boolean premium) {
+        AccountType accountType = new AccountType(premium);
+        Account account = new Account(accountType, 9);
+        account.setIban("RO023INGB434321431241");
+        account.setMoney(Money.newEuro(34.0));
+        return account;
+    }
 }
