@@ -17,7 +17,7 @@ public abstract class Customer {
 
     public abstract void withdraw(double sum, String currency);
 
-    abstract protected String getFullName();
+    protected abstract  String getFullName();
 
     public String getName() {
         return name;
