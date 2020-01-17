@@ -7,6 +7,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * @author danix
  */
+public class Money {
 
 public static final String EUR_CURRENCY = "EUR";
 private final double amount;
@@ -42,4 +43,5 @@ public Money substract(@Nonnull Money money) {
         }
         return new Money(this.amount - money.amount, currency);
         }
-        }
+
+}
