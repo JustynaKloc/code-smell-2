@@ -34,12 +34,37 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+             <dependency>
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-all</artifactId>
+         <version>1.10.19</version>
+         </dependency>
     </dependencies>
          <properties>
                   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
          <!-- Organization and project keys are displayed in the right sidebar of the project homepage -->
          <sonar.organization>TUICZ1</sonar.organization>
-         <sonar.projectKey>CodeSmells232999</sonar.projectKey>
-                  
-         </properties>
+         <sonar.projectKey>CodeSmells232999</sonar.projectKey>          
+      </properties>
+         <build>
+         <plugins>
+                  <plugin>
+                           <groupId>org.apache.maven.plugins</groupId>
+                           <artifactId>maven-compiler-plugin</artifactId>
+                           <version>3.6.1</version>
+                                    <configuration>
+                           <source>${jdk.version}</source>
+                           <target>${jdk.version}</target>
+                           <compilerArgs>
+                           <arg>-parameters</arg>
+                           </compilerArgs>
+                           </configuration>
+                    </plugin>
+                    <plugin>
+                           <groupId>org.sonarsource.scanner.maven</groupId>
+                           <artifactId>sonar-maven-plugin</artifactId>
+                           <version>3.6.0.1398</version>
+                  </plugin>
+         </plugins>
+</build>
 </project>
