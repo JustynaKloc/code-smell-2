@@ -30,3 +30,9 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
+    checkStyleRunAnalysis: true
+    codeCoverageToolOption: 'JaCoCo'
+- task: codecoveragecomparerbt@1
+  inputs:
+    codecoveragetarget: '85'
+    codecoveragemeasurementmethod: 'Line'  
