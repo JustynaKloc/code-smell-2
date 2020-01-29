@@ -4,6 +4,8 @@ package com.danix.code.smell.example001;
  * @author  danix
  */
 public abstract class Customer {
+    
+    private static final String IBAN = "Account: IBAN: ";
 
     protected String name;
     protected String email;
@@ -34,8 +36,6 @@ public abstract class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private static final String IBAN = "Account: IBAN: ";
 
     public String printCustomerDaysOverdrawn() {
         String fullName = getFullName();
