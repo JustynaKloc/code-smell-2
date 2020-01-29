@@ -20,16 +20,20 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
     publishJUnitResults: true
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     codeCoverageToolOption: 'JaCoCo'
-    javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
     checkStyleRunAnalysis: true
+    goals: 'package'
 - task: codecoveragecomparerbt@1
   inputs:
     codecoveragetarget: '100'
