@@ -40,5 +40,11 @@
          <version>1.10.19</version>
          </dependency>
     </dependencies>
+         <properties>
+         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+         <!-- Organization and project keys are displayed in the right sidebar of the project homepage -->
+         <sonar.organization>TUICZ1</sonar.organization>
+         <sonar.projectKey>CodeSmells232999</sonar.projectKey>          
+      </properties>
          
 </project>
