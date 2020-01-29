@@ -30,3 +30,7 @@ steps:
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
     checkStyleRunAnalysis: true
+- task: codecoveragecomparerbt@1
+  inputs:
+    codecoveragetarget: '100'
+    codecoveragemeasurementmethod: 'Line'
